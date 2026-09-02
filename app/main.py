@@ -69,7 +69,7 @@ class Dictionary:
         address = key_hash % self.capacity
         item = self.hash_table[address]
         if item is None:
-            raise KeyError
+            raise KeyError(f"Key {key!r} not found")
         if key_hash == item.hash_value and key == item.key:
             return item.value
         while True:
@@ -77,7 +77,7 @@ class Dictionary:
 
             item = self.hash_table[address]
             if item is None:
-                raise KeyError
+                raise KeyError(f"Key {key!r} not found")
             if (
                     key_hash == item.hash_value
                     and key == item.key
